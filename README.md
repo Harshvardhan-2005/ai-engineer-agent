@@ -17,8 +17,9 @@ A stateful multi-agent system that autonomously processes software issues by:
 
 ## 🧠 Architecture
 
-Issue → Planner → Research → Code → Test → Execute  
-→ Retry Loop → Reviewer → Final Output
+<p align="center">
+  <img src="./docs/multi.svg" alt="Architecture Diagram" width="800"/>
+</p>
 
 ## ⚙️ Tech Stack
 
