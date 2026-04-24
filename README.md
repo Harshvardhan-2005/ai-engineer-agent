@@ -1,21 +1,31 @@
-# 🤖 AI Engineer Agent (Multi-Agent System)
+# 🤖 AI Engineer Agent (Autonomous Multi-Agent System)
 
-A stateful multi-agent system that autonomously processes software issues by:
-- Planning tasks
-- Analyzing code context
-- Generating fixes
-- Writing tests
-- Iterating until validation success
+An end-to-end **autonomous AI system** that reads GitHub issues, generates code fixes, validates them in a sandbox, and **creates pull requests automatically**.
 
-This system mimics a real software engineering workflow using autonomous agents with iterative self-correction.
+This project simulates a real-world software engineering workflow using **collaborating AI agents with iterative self-correction**.
 
 ---
 
-## 🚀 Key Features
+## 🚀 What It Does
+
+✔ Reads issue  
+✔ Breaks it into steps  
+✔ Analyzes repository  
+✔ Generates fix using LLM  
+✔ Runs tests in Docker sandbox  
+✔ Commits & pushes changes  
+✔ Creates Pull Request automatically  
+
+---
+
+## 🔥 Key Features
 
 - Multi-agent architecture (Planner, Researcher, Coder, Tester, Executor, Reviewer)
 - Stateful execution with shared memory
 - Retry loop with convergence control
+- Docker-based safe code execution (Pytest sandbox)
+- Automatic Git operations (commit, push, branch handling)
+- Automatic Pull Request creation via GitHub API
 - Structured logging for observability
 - Deterministic mock LLM for testing
 
@@ -34,24 +44,6 @@ This system mimics a real software engineering workflow using autonomous agents 
 ---
 
 ## 📊 Execution Flow
-
-```text
-Issue
-  ↓
-Planner
-  ↓
-Researcher
-  ↓
-Coder
-  ↓
-Tester
-  ↓
-Executor
-  ↓
-Decision
-   ├── Retry (loop back)
-   └── Reviewer → Final Output
-```
 
 ---
 
@@ -98,12 +90,15 @@ ai-engineer-agent/
 ├── requirements.txt
 └── README.md
 ```
+---
+
 ## ⚙️ Tech Stack
 
 - Python  
 - LangGraph (stateful orchestration)  
-- Mock LLM (OpenAI-compatible)  
-- Structured logging  
+- Docker + Pytest (sandboxed execution)  
+- Git + GitHub API  
+- Requests / dotenv  
 
 ---
 
@@ -115,9 +110,19 @@ ai-engineer-agent/
 
 ---
 
-## 🔜 Next Steps
+---
 
-- Docker-based code execution  
-- GitHub API integration  
-- Real repository parsing  
-- Evaluation metrics  
+## ▶️ How to Run
+
+```bash
+git clone https://github.com/Harshvardhan-2005/ai-engineer-agent.git
+cd ai-engineer-agent
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+## 🧠 Author
+
+Harshvardhan Kumar Arya
