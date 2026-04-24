@@ -1,29 +1,41 @@
-# AI Engineer Agent System
+# AI Engineer Agent (Multi-Agent System)
 
-A stateful multi-agent system that autonomously processes GitHub issues by planning, generating code, writing tests, executing them, and iterating until success.
+A stateful multi-agent system that autonomously processes software issues by:
+- Planning tasks
+- Analyzing code context
+- Generating fixes
+- Writing tests
+- Iterating until validation success
 
-## Features
+## 🚀 Key Features
 
-- Multi-agent architecture (Planner, Researcher, Coder, Tester, Reviewer, Executor)
-- Stateful execution using LangGraph
-- Retry loop with iteration control
+- Multi-agent architecture (Planner, Researcher, Coder, Tester, Executor, Reviewer)
+- Stateful execution with shared memory
+- Retry loop with convergence control
 - Structured logging for observability
-- Mock LLM for deterministic testing
+- Deterministic mock LLM for testing
 
-## Architecture
+## 🧠 Architecture
 
-Input Issue → Planner → Researcher → Coder → Tester → Executor  
+Issue → Planner → Research → Code → Test → Execute  
 → Retry Loop → Reviewer → Final Output
 
-## Tech Stack
+## ⚙️ Tech Stack
 
 - Python
-- LangGraph
-- OpenAI (mocked)
-- Logging + structured state
+- LangGraph (stateful orchestration)
+- Mock LLM (OpenAI-compatible)
+- Structured logging
 
-## Current Status
+## 📊 Results
 
-- Mock execution implemented
-- Retry logic working
-- Next: Docker-based execution & real repo parsing
+- Iterative execution with failure recovery
+- Converges in ~3 iterations (mock setup)
+- Fully traceable execution flow
+
+## 🔜 Next Steps
+
+- Docker-based code execution
+- GitHub API integration
+- Real repository parsing
+- Evaluation metrics
