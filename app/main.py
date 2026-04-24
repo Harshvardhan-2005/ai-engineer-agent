@@ -1,4 +1,5 @@
 from app.core.state import AgentState, Issue
+from app.core import config
 from app.core.orchestrator import build_graph
 
 
@@ -7,7 +8,7 @@ def run():
     issue = Issue(
         title="Fix login bug",
         description="Login fails when password is empty",
-        repo="test/repo",
+        repo="Harshvardhan-2005/ai-engineer-agent",
         issue_id=1
     )
 

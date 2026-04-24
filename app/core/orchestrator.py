@@ -12,6 +12,7 @@ def build_graph():
 
     graph = StateGraph(dict)
 
+    # nodes
     graph.add_node("planner", planner_agent)
     graph.add_node("researcher", researcher_agent)
     graph.add_node("coder", coder_agent)
@@ -19,6 +20,7 @@ def build_graph():
     graph.add_node("executor", executor_agent)
     graph.add_node("reviewer", reviewer_agent)
 
+    # flow
     graph.set_entry_point("planner")
 
     graph.add_edge("planner", "researcher")
@@ -26,16 +28,18 @@ def build_graph():
     graph.add_edge("coder", "tester")
     graph.add_edge("tester", "executor")
 
+    # decision logic
     def decision(state):
 
-        if state["meta"]["iteration_count"] >= state["meta"]["max_iterations"]:
+    # 🔴 STOP CONDITION FIRST
+        if state["meta"]["iteration_count"] > state["meta"]["max_iterations"]:
             state["status"] = "failed"
             return "__end__"
 
         if state["tests"]["status"] == "fail":
             return "coder"
 
-    return "reviewer"
+        return "reviewer"
 
     graph.add_conditional_edges("executor", decision)
 

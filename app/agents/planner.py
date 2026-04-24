@@ -1,20 +1,24 @@
-def ask_llm(prompt: str) -> str:
+from app.services.llm import ask_llm
+from app.core.logger import log_event
 
-    if "Break this issue" in prompt:
-        return """1. Locate login function
-2. Add empty password check
-3. Return proper error"""
 
-    if "Fix the issue" in prompt:
-        return """def login(username, password):
-    if password == "":
-        return "Error: Empty password"
-    return "Success"
-"""
+def planner_agent(state):
+    prompt = f"""
+    Break this issue into clear steps:
 
-    if "Write tests" in prompt:
-        return """def test_empty_password():
-    assert login("user", "") == "Error: Empty password"
-"""
+    Title: {state["issue"]["title"]}
+    Description: {state["issue"]["description"]}
+    """
 
-    return "default response"
+    plan = ask_llm(prompt)
+
+    steps = [step.split(".", 1)[-1].strip() for step in plan.split("\n") if step.strip()]
+
+    state["plan"] = steps
+
+    log_event({
+        "agent": "planner",
+        "steps": steps
+    })
+
+    return state

@@ -1,13 +1,10 @@
 def ask_llm(prompt: str) -> str:
-    
-    # 🧠 Planner behavior
-    if "Break this issue into steps" in prompt:
-        return """1. Locate login function
-2. Check password validation
-3. Add condition for empty password
-4. Return proper error"""
 
-    # 💻 Code generator behavior
+    if "Break this issue" in prompt:
+        return """1. Locate login function
+2. Add empty password check
+3. Return proper error"""
+
     if "Fix the issue" in prompt:
         return """def login(username, password):
     if password == "":
@@ -15,9 +12,10 @@ def ask_llm(prompt: str) -> str:
     return "Success"
 """
 
-    # 🧪 Test generator behavior
     if "Write tests" in prompt:
-        return """def test_empty_password():
+        return """from solution import login
+
+def test_empty_password():
     assert login("user", "") == "Error: Empty password"
 """
 
