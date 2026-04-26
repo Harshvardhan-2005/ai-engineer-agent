@@ -11,7 +11,7 @@ This project simulates a real-world software engineering workflow using **collab
 ✔ Reads issue  
 ✔ Breaks it into steps  
 ✔ Analyzes repository  
-✔ Generates fix using LLM  
+✔ Generates a fix using LLM  
 ✔ Runs tests in Docker sandbox  
 ✔ Commits & pushes changes  
 ✔ Creates Pull Request automatically  
